@@ -2,6 +2,9 @@ import React, { useEffect, useState, useRef } from 'react';
 import GoogleMapReact from 'google-map-react';
 import socketClient from "socket.io-client";
 import { getCurrentLocation } from './utils';
+const {
+  REACT_APP_GOOGLE_API_KEY: GOOGLE_API_KEY
+} = process.env;
 
 function App() {
   const socket = useRef(null);
@@ -61,7 +64,7 @@ function App() {
     <div style={{ height: '500px', width: '100%' }}>
       <GoogleMapReact
         isMyLocationEnabled={true}
-        bootstrapURLKeys={{ key: 'AIzaSyCthmHOyv3BgnRjrAJPVABAurCRB0z76ZE' }}
+        bootstrapURLKeys={{ key: GOOGLE_API_KEY }}
         defaultCenter={{
           ...currentLocation
         }}
